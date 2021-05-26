@@ -32,4 +32,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build docker image and tag
         run: |
-          docker build -t crudapp:$GITHUB_JOB .
+          docker build -t crudapp:1.2 .
