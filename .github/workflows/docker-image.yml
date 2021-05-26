@@ -10,20 +10,16 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v2
     
-    - name: Retrieve authentication token
-      run: aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g7n9o0o4
-    
     - name: Build the Docker image
-      run: docker build -t crud-app .
-      #run: docker build . --file Dockerfile --tag crud-app:$(date +%s)
+      run: docker build . --file Dockerfile --tag crud-app:$(date +%s)
       
-    - name: Tag your image
-      run: docker tag crud-app:latest public.ecr.aws/g7n9o0o4/crud-app:latest
+      env:
+        latest_image: docker images | awk '{print $2}' | awk 'NR==2'
 
-    - name: Push this image
-      run: docker push public.ecr.aws/g7n9o0o4/crud-app:latest
+    - name: Echo another task
+      run: $latest_image
