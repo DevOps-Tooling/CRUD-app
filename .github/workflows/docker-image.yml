@@ -20,7 +20,7 @@ jobs:
     - name: Docker Build & Push to Docker Hub
       uses: opspresso/action-docker@master
       with:
-          args: --docker
+        args: --docker
       env:
         USERNAME: "kkjamdagni"
         PASSWORD: "alfa123123"
