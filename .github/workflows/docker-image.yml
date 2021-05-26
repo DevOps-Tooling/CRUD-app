@@ -10,16 +10,21 @@ jobs:
 
   build:
 
-    runs-on: self-hosted
+    runs-on: ununtu-latest
 
     steps:
     - uses: actions/checkout@v2
     
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag crud-app:$(date +%s)
-      
+    #- name: Build the Docker image
+    #  run: docker build . --file Dockerfile --tag crud-app:$(date +%s)
+    - name: Docker Build & Push to Docker Hub
+      uses: opspresso/action-docker@master
+      with:
+          args: --docker
       env:
-        latest_image: docker images | awk '{print $2}' | awk 'NR==2'
-
-    - name: Echo another task
-      run: $latest_image
+        USERNAME: "kkjamdagni"
+        PASSWORD: "alfa123123"
+        DOCKERFILE: "Dockerfile"
+        IMAGE_NAME: "kkjamdagni/crud-app"
+        TAG_NAME: "v0.0.1"
+        LATEST: "true"
