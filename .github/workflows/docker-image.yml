@@ -21,7 +21,7 @@ jobs:
         latest_image: docker images | awk '{print $3}' | awk 'NR==2'
 
     - name: Run the Docker container using above key
-      run: docker run -it -p 8080:9000 crud-app:$latest_image
+      run: docker run -p 8080:9000 crud-app:$latest_image
 
     - name: Echo a single world
       run: echo hello
