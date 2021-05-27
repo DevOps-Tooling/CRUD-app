@@ -22,8 +22,8 @@ jobs:
       with:
         args: --docker
       env:
-        USERNAME: ${{ secrets.DOCKER_USERNAME }}"kkjamdagni"
-        PASSWORD: ${{ secrets.DOCKER_PASSWORD }}"alfa123123"
+        USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         DOCKERFILE: "Dockerfile"
         IMAGE_NAME: "kkjamdagni/crud-app"
         TAG_NAME: "v0.0.1"
